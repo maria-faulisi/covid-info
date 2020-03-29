@@ -1,45 +1,55 @@
 (function(){
   //handlebars template for articles
-  let source = $('#country').html();
-  let template = Handlebars.compile(source);  
+  let confirmed_source = $('#confirmed').html();
+  let confirmed_template = Handlebars.compile(confirmed_source);
+  let none_confirmed_source = $('#none-confirmed').html();
+  let none_confirmed_template = Handlebars.compile(none_confirmed_source); 
 
   let corona = {};
   const base_url = 'https://api.covid19api.com/'
   const corona_summary = 'summary';
   const all_countries = 'countries';
   const corona_country_day_one = 'dayone/country/united-kingdom/status/confirmed';
-  
-  //get conrona virus api working
-  corona.getData = function(api_string, func){
-    $.get(api_string).done(function(data){
-      console.log(data);
+  const $country_list_container = $('#confirmed-list-container');
 
-    }).fail(function(){
-      console.log('API Did not send data.');
-    });
-  };
-
-  //corona.getData(base_url + all_countries);
-  function displayListOfCountries(){
-    
-  };
 
   //start program
   $(document).ready(function(){
-    const $country_list_container = $('#country-list-container');
-    $.get(base_url + all_countries).done(function(data){
-      let rawData = data;
-      let countries = [];
+    //corona.getData(base_url + all_countries, corona.displayListOfCountries, $country_list_container);
+
+    $.get(base_url + corona_summary).done(function(data){
+      let rawData = data['Countries'];
+      let confirmed_countries = [];
+      let no_case_countries = [];
 
       for (var i = rawData.length - 1; i >= 0; i--) {
-        if (rawData[i]['Country']) {
-          countries.push(rawData[i]['Country']);
+        if (rawData[i]['TotalConfirmed']) {
+          confirmed_countries.push({
+            country: rawData[i]['Country'],
+            confirmed: rawData[i]['TotalConfirmed'],
+            deaths: rawData[i]['TotalDeaths'],
+            recovered: rawData[i]['TotalRecovered']
+          });
+        } else {
+          no_case_countries.push({country: rawData[i]['Country']});
         }
       }
-      $country_list_container.append(template({countries}));
+      confirmed_countries.reverse();
+      no_case_countries.reverse();
+      console.log(no_case_countries);
+      $country_list_container.append(confirmed_template({confirmed_countries}));
+      $country_list_container.append(none_confirmed_template({no_case_countries}));
+
     }).fail(function(){
       console.log('API Did not send data.');
     });
+    
+    
+    $('.individual-country').on('click', 'a', function(e){
+      e.preventDefault();
+
+    });
+
   });
 })();
 

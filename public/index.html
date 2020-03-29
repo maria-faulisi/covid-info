@@ -7,15 +7,41 @@
 </head>
 
 <body>
-  <div id="country-list-container">
+  <header class="container container-fluid">
+    <h1>
+      Covid-19 Country Summaries
+    </h1>
+  </header>
+  <div id="confirmed-list-container" class="container container-fluid">
   </div>
-  <script id="country" type="text/x-handlebars-template">
-    <ul class="list-of-countries">
-      {{#each countries}}
-        <li>{{this}}</li>
+  <div id="no-cases-list-container" class="container container-fluid">
+  </div>  
+  <script id="confirmed" type="text/x-handlebars-template">
+    <ul class="list-of-countries row">
+      {{#each confirmed_countries}}
+        {{#if country}}
+          <li data-confirmed={{confirmed}} data-deaths={{deaths}} data-recovered={{recovered}} class="individual-country col-sm-3">
+            <a href="#">
+              {{country}}
+            </a>
+          </li>
+        {{/if}}
       {{/each}}
     </ul>
-  </script>  
+  </script> 
+  <script id="none-confirmed" type="text/x-handlebars-template">
+    <ul class="list-of-countries row">
+      {{#each no_case_countries}}
+        {{#if country}}
+          <li class="individual-country col-sm-3">
+            <a href="#">
+              {{country}}
+            </a>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </script>    
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
