@@ -2,7 +2,7 @@
 const data = Data;
 
 //firebase config
-
+const firebaseConfig = config;
 
 //handlebars template for articles
 let confirmed_source = $('#confirmed').html();
