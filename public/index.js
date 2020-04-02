@@ -3,6 +3,9 @@ const data = Data;
 
 //firebase config
 const firebaseConfig = config;
+firebase.initializeApp(firebaseConfig);
+const covidAppReference = firebase.database();
+
 
 //handlebars template for articles
 let confirmed_source = $('#confirmed').html();
@@ -58,7 +61,6 @@ function getAndDisplayData(iso_codes){
       $individual_country.each(function(index, element){
         let $element = $(this);
         let $elementName = $element.data('name');
-        console.log($elementName);
         
         for (var i = iso_codes.length - 1; i >= 0; i--) {
           if ($elementName === iso_codes[i]['name']) {

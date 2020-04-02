@@ -1,3 +1,19 @@
+#country-list-and-stats{
+  max-height: 700px;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+#all-countries{
+  position: relative;
+  max-height: 700px;
+  overflow: scroll;  
+}
+
+.list-of-countries{
+  padding: 0;
+}
+
 .individual-country{
   list-style: none;
 }
