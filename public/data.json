@@ -799,6 +799,10 @@ Data = {
       {
          "name": "Kosovo",
          "code": "XK"
+      },
+      {
+         "name": "Republic-of-Kosovo",
+         "code": "XK"
       },      
       {
          "name": "Pitcairn",
@@ -936,6 +940,10 @@ Data = {
          "name": "Eswatini",
          "code": "SZ"
       },
+      {
+         "name": "Swaziland",
+         "code": "SZ"
+      },      
       {
          "name": "Turks-and-Caicos-Islands",
          "code": "TC"

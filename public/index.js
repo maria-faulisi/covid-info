@@ -1,17 +1,16 @@
 //load iso data from local file
 const data = Data;
-
 //firebase config
 const firebaseConfig = config;
 firebase.initializeApp(firebaseConfig);
-const covidAppReference = firebase.database();
-
-
+const messageAppReference = firebase.database();
 //handlebars template for articles
 let confirmed_source = $('#confirmed').html();
 let confirmed_template = Handlebars.compile(confirmed_source);
 let none_confirmed_source = $('#none-confirmed').html();
 let none_confirmed_template = Handlebars.compile(none_confirmed_source); 
+let single_message = $('#single-message').html();
+let single_message_template = Handlebars.compile(single_message);
 
 let corona = {};
 const base_url = 'https://api.covid19api.com/'
@@ -87,26 +86,81 @@ function addEventHandler(){
     $('.deaths-number').html($this.data('deaths'));
     $('.recovered-number').html($this.data('recovered'));
 
+    getCountryMessages($this.data('name').toLowerCase());
   });
 };
+
+function saveMessage(){
+  let country = $('.individual-name').html().toLowerCase();
+
+  if ($('input').val()) {
+    //variable for input data
+    let message = $('input').val();
+    //push message to corresponding country in messages object
+    messageAppReference.ref('messages/' + country).push({
+      message: message
+    });
+    //clear out input field
+    $('input').val(''); 
+  } else {
+    alert('Must enter a value to send message.');
+  }  
+};
+
+function getCountryMessages(country) {
+  // retrieve messages data when .on() initially executes
+  // and when its data updates
+  messageAppReference.ref('messages/' + country).on('value', function (results) {
+    const $messageList = $('#country-messages');
+    $messageList.empty();
+    const allMessages = results.val();
+    // iterate through results coming from database call; messages
+    for (const msg in allMessages) {
+      // get method is supposed to represent HTTP GET method
+      const message = allMessages[msg].message;
+      const id = msg;
+      //use handlebars template
+      $messageList.append(single_message_template({message, id}));
+
+      // create delete element
+      // const $deleteElement = $('<i class="fa fa-trash pull-right delete"></i>');
+      // $deleteElement.on('click', function (e) {
+      //   const id = $(e.target.parentNode).data('id')
+      //   deleteMessage(id)
+      // })
+
+      // // add id as data attribute so we can refer to later for updating
+      // $messageListElement.attr('data-id', msg)
+      // // add message to li
+      // $messageListElement.html(message)
+      // // add delete element
+      // $messageListElement.append($deleteElement)
+      // // add voting elements
+      // $messageListElement.append($upVoteElement)
+      // $messageListElement.append($downVoteElement)
+      // // show votes
+      // $messageListElement.append('<div class="pull-right">' + votes + '</div>')
+      // // push element to array of messages
+      // messages.push($messageListElement)
+      // // remove lis to avoid dupes
+      // $messageBoard.empty()
+      // for (var i in messages) {
+      //   $messageBoard.append(messages[i])
+      // }
+    }
+  })
+};
+
+
 
 //start program
 $(function(){
   getAndDisplayData();
 
   $('.btn-primary').on('click', function(e){
-    let country = $('.individual-name').html();
     e.preventDefault();
-
-    if ($('input').val()) {
-      console.log($('input').val());
-      console.log(country);
-    } else {
-      alert('Must enter a value to send message.');
-    }
-
+    saveMessage();
   });
-
 });
 
 

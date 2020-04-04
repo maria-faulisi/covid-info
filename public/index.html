@@ -36,8 +36,11 @@
         </div>
         <div id="messages">
           <h5 class="messages-for-country">Select a country to send message</h5>
+          <div>
+            <ul id="country-messages"></ul>
+          </div>
           <div id="form">
-            <input type="text" name="well-wishes">
+            <input id="message" type="text" name="well-wishes">
             <button type="submit" class="btn btn-primary">Send Love</button>
           </div>          
         </div>
@@ -46,7 +49,9 @@
   </div>
 
 
-
+  <script id="single-message" type="text/x-handlebars-template">
+    <li data-id="{{id}}" class="individual-msg alert alert-secondary">{{message}}</li>
+  </script> 
   <script id="confirmed" type="text/x-handlebars-template">
     <ul class="list-of-countries row">
       {{#each confirmed_countries}}
