@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div class="container container-fluid">
+  <div id="wrapper" class="container container-fluid">
     <h1>Covid-19 Country Summaries</h1>   
     <div id="country-list-and-stats" class="row">
       <div id="all-countries" class="container container-fluid col-6">
@@ -22,7 +22,24 @@
         </div>  
       </div>
       <div id="country-status" class="container container-fluid col-6">
-        
+        <div id="stats">
+          <h3 class="individual-name">Select a country for stats</h3>
+          <div class="individual-stat individual-confirmed">
+            <h4>Confirmed cases: <span class="confirmed-number"></span></h4>
+          </div>
+          <div class="individual-stat individual-deaths">
+            <h4>Confirmed deaths: <span class="deaths-number"></span></h4>
+          </div>
+          <div class="individual-stat individual-recovered">
+            <h4>Confirmed recovered: <span class="recovered-number"></span></h4>
+          </div>
+        </div>
+        <div id="messages">
+          <div id="form">
+            <input type="text" name="well-wishes">
+            <button type="submit" class="btn btn-primary">Send Love</button>
+          </div>          
+        </div>
       </div>          
     </div>
   </div>

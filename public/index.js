@@ -69,19 +69,39 @@ function getAndDisplayData(iso_codes){
             $element.find('img').attr('src', '../ship.svg').addClass('other-flag');
           }
         }
+      });
 
-      });    
+      addEventHandler();    
     }
+  });
+};
+
+function addEventHandler(){
+  //get data from country on click and populate #country-status
+  $('.individual-country').on('click', function(e){
+    e.preventDefault();
+    //get data store as variables
+    let $this = $(this);
+    //let $confirmed = $this.data('confirmed');
+    // let $deaths = $this.data('deaths');
+    // let $recovered = $this.data('recovered');
+
+    $('.individual-name').html($this.data('name'));
+    $('.confirmed-number').html($this.data('confirmed'));
+    $('.deaths-number').html($this.data('deaths'));
+    $('.recovered-number').html($this.data('recovered'));
+
   });
 };
 
 //start program
 $(function(){
-  getAndDisplayData(); 
-
-  
+  getAndDisplayData();
 
 });
+
+
+
 
 
 

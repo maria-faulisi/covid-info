@@ -1,3 +1,13 @@
+#wrapper{
+  margin-top: 50px;
+}
+
+#wrapper h1{
+  margin-bottom: 40px;
+  color: gray;
+  font-weight: 300;
+}
+
 #country-list-and-stats{
   max-height: 700px;
   border: 1px solid rgba(0,0,0,.125);
@@ -18,7 +28,89 @@
   list-style: none;
 }
 
-.other-flag{
+.individual-country:hover{
+  background-color: rgba(0,0,0,.125);
+}
+
+.individual-country a {
+  color: black;
+}
+
+.individual-country a:hover{
+  text-decoration: none;
+}
+
+.other-flag {
   height: 64px;
   width: 64px;
+}
+
+#stats{
+  min-height: 40%;
+  margin-top: 14px;
+  max-height: 300px; 
+  padding: 24px; 
+}
+
+.individual-name{
+  margin-bottom: 20px;
+}
+
+.individual-stat h4{
+  margin-bottom: 20px;
+  color: gray;
+  font-weight: 300;
+}
+
+.individual-stat span{
+  font-weight: 500;
+}
+
+.confirmed-number{
+  color: red;
+}
+
+.deaths-number{
+  color: black;
+}
+
+.recovered-number{
+  color: green;
+}
+
+#messages{
+  position: relative;
+  min-height: 377px;
+  margin-top: 14px;  
+}
+
+#stats, #messages {
+  max-height: 700px;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+#messages input{
+  height: 108%;
+  width: 77%;
+}
+
+#form {
+  position: absolute;
+  height: 5%;
+  bottom: 8%;
+  width: 100%;
+  margin: 0 6px;  
+}
+
+#form input{
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.125);
+  width: 77%;
+  height: 40px;
+}
+
+#form button{
+  vertical-align: top;
+  width: 20%;
 }
