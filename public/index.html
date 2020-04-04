@@ -8,6 +8,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>  
+  <script src="https://kit.fontawesome.com/3732bb8735.js" crossorigin="anonymous"></script>  
   <link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 
@@ -50,7 +51,16 @@
 
 
   <script id="single-message" type="text/x-handlebars-template">
-    <li data-id="{{id}}" class="individual-msg alert alert-secondary">{{message}}</li>
+    <li data-id="{{id}}" class="individual-msg alert alert-secondary">{{message}}
+      <div class="actions"> 
+        <div class="action delete">
+          <i class="fa fa-trash"></i>
+        </div>
+        <div class="action edit">
+          <i class="fa fa-pencil"></i>
+        </div>
+      </div>
+    </li>
   </script> 
   <script id="confirmed" type="text/x-handlebars-template">
     <ul class="list-of-countries row">
@@ -70,7 +80,7 @@
     <ul class="list-of-countries row">
       {{#each no_case_countries}}
         {{#if country}}
-          <li data-name={{country_data}} class="individual-country col-sm-3">
+          <li data-name={{country_data}} class="individual-country col-sm-6">
             <img src="{{flag}}">
             <a href="#">
               {{country}}

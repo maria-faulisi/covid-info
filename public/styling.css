@@ -100,6 +100,24 @@
   margin: 17px 0px 15px 12px;
 }
 
+.individual-msg:hover > .actions{
+  opacity: 1;
+}
+
+.actions{
+  display: inline-block;
+  float: right; 
+  opacity: 0; 
+}
+
+.action{
+  display: inline-block;
+}
+
+.fa-trash{
+  margin-right: 10px
+}
+
 #country-messages{
   text-decoration: none;
   list-style: none;
