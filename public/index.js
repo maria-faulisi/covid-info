@@ -98,7 +98,6 @@ function saveMessage(){
     //   message: message
     // });
     let id = messageAppReference.ref().child('messages/' + country).push().key;
-    console.log(id);
     let updates = {};
     updates['messages/' + country + '/' + id] = {'message': message};
     messageAppReference.ref().update(updates);
@@ -114,45 +113,47 @@ function saveMessage(){
 };
 
 function getCountryMessages(country) {
-  // retrieve messages data when .on() initially executes
-  // and when its data updates
+  // retrieve messages data when .on() initially executes and when its data updates
   messageAppReference.ref('messages/' + country).on('value', function (results) {
     const $messageList = $('#country-messages');
     $messageList.empty();
     const allMessages = results.val();
     // iterate through results coming from database call; messages
     for (const msg in allMessages) {
-      // get method is supposed to represent HTTP GET method
       const message = allMessages[msg].message;
       const id = msg;
       //use handlebars template
-      $messageList.append(single_message_template({message, id}));
+      $messageList.append(single_message_template({message, id, country}));     
     }
+    $('.fa-trash').on('click', function(){
+      let $this = $(this).closest('.individual-msg');
+      let id = $this.data('id');
+      let country = $this.data('msg-country');
+      deleteCountryMessage(country, id);
+    });     
   })
 };
 
-function deleteCountryMessage(id){
+function deleteCountryMessage(country, id){
+  console.log('country:' + country + ', id:' + id);
   //check localstorage for id
-  let visitorLocalStorage = window.localStorage;
-  visitorLocalStorage.getItem('message:' + id, id);  
-  // find message whose objectId is equal to the id we're searching with
-  var messageReference = messageAppReference.ref('messages/' + id)
-  messageReference.remove()
+  let post_author = window.localStorage.getItem('message:' + id);
+  if (post_author) {
+    // find message whose objectId is equal to the id we're searching with
+    messageAppReference.ref('messages/' + country + '/' + id).remove();
+  }else{
+    alert('You are not the author, you cannot delete.');
+  }
 };
 
 $(function(){
   getAndDisplayData();
 
-  $('.btn-primary').on('click', 'li', function(e){
+  $('.btn-primary').on('click', function(e){
     e.preventDefault();
     saveMessage();
   });
 
-  // $('.li').on('click', function(e){
-  //   e.preventDefault();
-  //   let id = $(this).parent().parent().data('id');
-  //   console.log(this);
-  // });;
 });
 
 
