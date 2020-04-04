@@ -95,6 +95,12 @@
   width: 77%;
 }
 
+.messages-for-country{
+  color: lightgray;
+  margin-top: 17px;
+  margin-left: 24px;
+}
+
 #form {
   position: absolute;
   height: 5%;
@@ -108,6 +114,7 @@
   border: 1px solid rgba(0,0,0,.125);
   width: 77%;
   height: 40px;
+  padding-left: 10px;
 }
 
 #form button{

@@ -80,13 +80,9 @@ function addEventHandler(){
   //get data from country on click and populate #country-status
   $('.individual-country').on('click', function(e){
     e.preventDefault();
-    //get data store as variables
     let $this = $(this);
-    //let $confirmed = $this.data('confirmed');
-    // let $deaths = $this.data('deaths');
-    // let $recovered = $this.data('recovered');
-
     $('.individual-name').html($this.data('name'));
+    $('.messages-for-country').html('Messages for ' + $this.data('name'));
     $('.confirmed-number').html($this.data('confirmed'));
     $('.deaths-number').html($this.data('deaths'));
     $('.recovered-number').html($this.data('recovered'));
@@ -97,6 +93,19 @@ function addEventHandler(){
 //start program
 $(function(){
   getAndDisplayData();
+
+  $('.btn-primary').on('click', function(e){
+    let country = $('.individual-name').html();
+    e.preventDefault();
+
+    if ($('input').val()) {
+      console.log($('input').val());
+      console.log(country);
+    } else {
+      alert('Must enter a value to send message.');
+    }
+
+  });
 
 });
 
