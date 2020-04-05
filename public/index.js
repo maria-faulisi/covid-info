@@ -130,23 +130,25 @@ function getCountryMessages(country) {
     });
 
     $('.fa-pencil').on('click', function(){
-      $('#virusModal').modal('show');
+      // $('#virusModal').modal('show');
       let $this = $(this).closest('.individual-msg');
       let id = $this.data('id');
       let country = $this.data('msg-country');
       let currentMessage = $this.text();
-      //inject input with current message from database
-      $('#edit-message').val(currentMessage);
+      editCountryMessage(country, id);
+
+      // //inject input with current message from database
+      // $('#edit-message').val(currentMessage);
       
-      $('#save-edit').on('click', function(e){
-        let newMessage = $('#edit-message').val();
-        e.preventDefault();
-        // find message whose objectId is equal to the id we're searching with
-        var messageReference = messageAppReference.ref('messages/' + country + '/' + id)
-        // update votes property
-        messageReference.update({'message': newMessage});
-        $('#virusModal').modal('hide');
-      });
+      // $('#save-edit').on('click', function(e){
+      //   let newMessage = $('#edit-message').val();
+      //   e.preventDefault();
+      //   // find message whose objectId is equal to the id we're searching with
+      //   var messageReference = messageAppReference.ref('messages/' + country + '/' + id)
+      //   // update votes property
+      //   messageReference.update({'message': newMessage});
+      //   $('#virusModal').modal('hide');
+      // });
     });    
   })
 };
@@ -157,6 +159,25 @@ function deleteCountryMessage(country, id){
   if (post_author) {
     // find message whose objectId is equal to the id we're searching with
     messageAppReference.ref('messages/' + country + '/' + id).remove();
+  }else{
+    alert('You are not the author, you cannot delete.');
+  }
+};
+
+function editCountryMessage(country, id){
+  //check localstorage for id
+  let post_author = window.localStorage.getItem('message:' + id);
+  if (post_author) {
+    $('#virusModal').modal('show');
+    $('#save-edit').on('click', function(e){
+      let newMessage = $('#edit-message').val();
+      e.preventDefault();
+      // find message whose objectId is equal to the id we're searching with
+      var messageReference = messageAppReference.ref('messages/' + country + '/' + id)
+      // update votes property
+      messageReference.update({'message': newMessage});
+      $('#virusModal').modal('hide');
+    });
   }else{
     alert('You are not the author, you cannot delete.');
   }
