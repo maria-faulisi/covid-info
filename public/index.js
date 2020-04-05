@@ -146,12 +146,12 @@ function deleteCountryMessage(elem){
 };
 
 function editCountryMessage(elem){
+  let id = elem.data('id');
+  let country = elem.data('msg-country');
   //check localstorage for id
   let post_author = window.localStorage.getItem('message:' + id);
 
   if (post_author) {
-    let id = elem.data('id');
-    let country = elem.data('msg-country');
     let currentMessage = elem.text().trim();
     // find message whose objectId is equal to the id we're searching with
     const messageReference = messageAppReference.ref('messages/' + country + '/' + id);
