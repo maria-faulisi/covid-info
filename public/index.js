@@ -12,7 +12,6 @@ let none_confirmed_template = Handlebars.compile(none_confirmed_source);
 let single_message = $('#single-message').html();
 let single_message_template = Handlebars.compile(single_message);
 
-let corona = {};
 const base_url = 'https://api.covid19api.com/summary'
 const $country_list_container = $('#confirmed-list-container');
 
@@ -25,7 +24,7 @@ function getAndDisplayData(iso_codes){
         let confirmed_countries = [];
         let no_case_countries = [];
 
-        for (var i = rawData.length - 1; i >= 0; i--) {
+        for (let i = rawData.length - 1; i >= 0; i--) {
           if (rawData[i]['TotalConfirmed']) {
             let country_data = rawData[i]['Country'].replace(/\s+/g, '-');
             confirmed_countries.push({
@@ -58,7 +57,7 @@ function getAndDisplayData(iso_codes){
         let $element = $(this);
         let $elementName = $element.data('name');
         
-        for (var i = iso_codes.length - 1; i >= 0; i--) {
+        for (let i = iso_codes.length - 1; i >= 0; i--) {
           if ($elementName === iso_codes[i]['name']) {
             $element.find('img').attr('src', 'https://www.countryflags.io/' + iso_codes[i]['code'] + '/flat/64.png');
           }else if ($elementName === 'Cruise-Ship'|| $elementName === 'Diamond-Princess' || $elementName === 'MS-Zaandam' || $elementName === 'Others'){
@@ -147,24 +146,32 @@ function deleteCountryMessage(elem){
 };
 
 function editCountryMessage(elem){
-  let id = elem.data('id');
-  console.log(id);
-  let country = elem.data('msg-country');
-  let currentMessage = elem.text().trim();
   //check localstorage for id
   let post_author = window.localStorage.getItem('message:' + id);
 
   if (post_author) {
+    let id = elem.data('id');
+    let country = elem.data('msg-country');
+    let currentMessage = elem.text().trim();
+    // find message whose objectId is equal to the id we're searching with
+    const messageReference = messageAppReference.ref('messages/' + country + '/' + id);
+    //set modal input to current message
     $('#edit-message').val(currentMessage);
-    $('#virusModal').modal('show');   
+    //show modal
+    $('#virusModal').modal('show');
+      
+    $('#cancel-edit').on('click', function(e){
+      messageReference.update({'message': currentMessage});
+    });
+
     $('#save-edit').on('click', function(e){
-      let newMessage = $('#edit-message').val();
       e.preventDefault();
-      // find message whose objectId is equal to the id we're searching with
-      var messageReference = messageAppReference.ref('messages/' + country + '/' + id)
-      // update votes property
+      //capture new message
+      let newMessage = $('#edit-message').val();
+      // update message in db
       messageReference.update({'message': newMessage});
-      $('#virusModal').modal('hide');
+      //close modal
+      $('#virusModal').modal('hide');      
     });
   }else{
     alert('You are not the author, you cannot edit.');
@@ -173,7 +180,7 @@ function editCountryMessage(elem){
 
 $(function(){
   getAndDisplayData();
-
+  //save message when "send love" clicked
   $('#send-love').on('click', function(e){
     e.preventDefault();
     saveMessage();
