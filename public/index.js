@@ -77,6 +77,7 @@ function addEventHandler(){
   $('.individual-country').on('click', function(e){
     e.preventDefault();
     let $this = $(this);
+    let $header = $('.individual-name');
     $('.individual-name').html($this.data('name'));
     $('.messages-for-country').html('Messages for ' + $this.data('name'));
     $('.confirmed-number').html($this.data('confirmed'));
@@ -89,14 +90,10 @@ function addEventHandler(){
 
 function saveMessage(){
   let country = $('.individual-name').html().toLowerCase();
-
+  console.log(country);
   if ($('input').val()) {
     //variable for input data
     let message = $('input').val();
-    // //push message to corresponding country in messages object
-    // messageAppReference.ref('messages/' + country).push({
-    //   message: message
-    // });
     let id = messageAppReference.ref().child('messages/' + country).push().key;
     let updates = {};
     updates['messages/' + country + '/' + id] = {'message': message};
@@ -130,12 +127,31 @@ function getCountryMessages(country) {
       let id = $this.data('id');
       let country = $this.data('msg-country');
       deleteCountryMessage(country, id);
-    });     
+    });
+
+    $('.fa-pencil').on('click', function(){
+      $('#virusModal').modal('show');
+      let $this = $(this).closest('.individual-msg');
+      let id = $this.data('id');
+      let country = $this.data('msg-country');
+      let currentMessage = $this.text();
+      //inject input with current message from database
+      $('#edit-message').val(currentMessage);
+      
+      $('#save-edit').on('click', function(e){
+        let newMessage = $('#edit-message').val();
+        e.preventDefault();
+        // find message whose objectId is equal to the id we're searching with
+        var messageReference = messageAppReference.ref('messages/' + country + '/' + id)
+        // update votes property
+        messageReference.update({'message': newMessage});
+        $('#virusModal').modal('hide');
+      });
+    });    
   })
 };
 
 function deleteCountryMessage(country, id){
-  console.log('country:' + country + ', id:' + id);
   //check localstorage for id
   let post_author = window.localStorage.getItem('message:' + id);
   if (post_author) {
@@ -149,7 +165,7 @@ function deleteCountryMessage(country, id){
 $(function(){
   getAndDisplayData();
 
-  $('.btn-primary').on('click', function(e){
+  $('#send-love').on('click', function(e){
     e.preventDefault();
     saveMessage();
   });

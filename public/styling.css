@@ -95,6 +95,14 @@
   width: 77%;
 }
 
+#edit-message{
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.125);
+  padding-left: 10px;  
+}
+
 .messages-for-country{
   color: lightgray;
   margin: 17px 0px 15px 12px;
