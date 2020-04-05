@@ -90,7 +90,6 @@ function addEventHandler(){
 
 function saveMessage(){
   let country = $('.individual-name').html().toLowerCase();
-  console.log(country);
   if ($('input').val()) {
     //variable for input data
     let message = $('input').val();
@@ -124,36 +123,19 @@ function getCountryMessages(country) {
     }
     $('.fa-trash').on('click', function(){
       let $this = $(this).closest('.individual-msg');
-      let id = $this.data('id');
-      let country = $this.data('msg-country');
-      deleteCountryMessage(country, id);
+      deleteCountryMessage($this);
     });
 
     $('.fa-pencil').on('click', function(){
-      // $('#virusModal').modal('show');
       let $this = $(this).closest('.individual-msg');
-      let id = $this.data('id');
-      let country = $this.data('msg-country');
-      let currentMessage = $this.text();
-      editCountryMessage(country, id);
-
-      // //inject input with current message from database
-      // $('#edit-message').val(currentMessage);
-      
-      // $('#save-edit').on('click', function(e){
-      //   let newMessage = $('#edit-message').val();
-      //   e.preventDefault();
-      //   // find message whose objectId is equal to the id we're searching with
-      //   var messageReference = messageAppReference.ref('messages/' + country + '/' + id)
-      //   // update votes property
-      //   messageReference.update({'message': newMessage});
-      //   $('#virusModal').modal('hide');
-      // });
+      editCountryMessage($this);
     });    
   })
 };
 
-function deleteCountryMessage(country, id){
+function deleteCountryMessage(elem){
+  let id = elem.data('id');
+  let country = elem.data('msg-country');  
   //check localstorage for id
   let post_author = window.localStorage.getItem('message:' + id);
   if (post_author) {
@@ -164,11 +146,15 @@ function deleteCountryMessage(country, id){
   }
 };
 
-function editCountryMessage(country, id){
+function editCountryMessage(elem){
+  let id = elem.data('id');
+  let country = elem.data('msg-country');
+  let currentMessage = elem.text().trim();
   //check localstorage for id
   let post_author = window.localStorage.getItem('message:' + id);
   if (post_author) {
-    $('#virusModal').modal('show');
+    $('#edit-message').val(currentMessage);
+    $('#virusModal').modal('show');   
     $('#save-edit').on('click', function(e){
       let newMessage = $('#edit-message').val();
       e.preventDefault();
@@ -179,7 +165,7 @@ function editCountryMessage(country, id){
       $('#virusModal').modal('hide');
     });
   }else{
-    alert('You are not the author, you cannot delete.');
+    alert('You are not the author, you cannot edit.');
   }
 };
 
