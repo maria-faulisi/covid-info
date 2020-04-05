@@ -1,3 +1,5 @@
+//https://www.countryflags.io/
+
 Data = {
    "iso": [
       {
@@ -61,8 +63,12 @@ Data = {
          "code": "AW"
       },
       {
-         "name": "-Azerbaijan",
-         "code": "AZ"
+         "name": "Aruba",
+         "code": "AW"
+      },      
+      {
+         "name": "ALA-Aland-Islands",
+         "code": "AX"
       },
       {
          "name": "Azerbaijan",
@@ -112,6 +118,10 @@ Data = {
          "name": "Brunei",
          "code": "BN"
       },
+      {
+         "name": "Brunei-Darussalam",
+         "code": "BN"
+      },      
       {
          "name": "Bolivia",
          "code": "BO"
@@ -185,6 +195,10 @@ Data = {
          "code": "CI"
       },
       {
+         "name": "Côte-d'Ivoire",
+         "code": "CI"
+      },      
+      {
          "name": "Ivory-Coast",
          "code": "CI"
       },      
@@ -240,6 +254,10 @@ Data = {
          "name": "Czechia",
          "code": "CZ"
       },
+      {
+         "name": "Czech-Republic",
+         "code": "CZ"
+      },      
       {
          "name": "Germany",
          "code": "DE"
@@ -305,7 +323,7 @@ Data = {
          "code": "FK"
       },
       {
-         "name": "Micronesia, Federated States of",
+         "name": "Micronesia,-Federated-States-of",
          "code": "FM"
       },
       {
@@ -318,6 +336,10 @@ Data = {
       },
       {
          "name": "Saint-Barthelemy",
+         "code": "FR"
+      },
+      {
+         "name": "Saint-Barthélemy",
          "code": "FR"
       },      
       {
@@ -411,15 +433,27 @@ Data = {
       {
          "name": "Hong-Kong-SAR",
          "code": "HK"
+      },
+      {
+         "name": "Hong-Kong,-SAR-China",
+         "code": "HK"
       },      
       {
          "name": "Holy-See",
+         "code": "VA"
+      },
+      {
+         "name": "Holy-See-(Vatican-City-State)",
          "code": "VA"
       },      
       {
          "name": "Heard-Island-and-Mcdonald-Islands",
          "code": "HM"
       },
+      {
+         "name": "Heard-and-Mcdonald-Islands",
+         "code": "HM"
+      },      
       {
          "name": "Honduras",
          "code": "HN"
@@ -457,7 +491,7 @@ Data = {
          "code": "IL"
       },
       {
-         "name": "Isle of Man",
+         "name": "Isle-of-Man",
          "code": "IM"
       },
       {
@@ -476,6 +510,10 @@ Data = {
          "name": "Iran-(Islamic-Republic-of)",
          "code": "IR"
       },
+      {
+         "name": "Iran,-Islamic-Republic-of",
+         "code": "IR"
+      },      
       {
          "name": "Iran",
          "code": "IR"
@@ -537,6 +575,11 @@ Data = {
          "code": "KP"
       },
       {
+         "name": "Korea-(North)",
+         "code": "KP"
+      },
+
+      {
          "name": "Korea,-South",
          "code": "KR"
       },
@@ -544,6 +587,10 @@ Data = {
          "name": "South-Korea",
          "code": "KR"
       },
+      {
+         "name": "Korea-(South)",
+         "code": "KR"
+      },      
       {
          "name": "Kuwait",
          "code": "KW"
@@ -555,6 +602,10 @@ Data = {
       {
          "name": "Kazakhstan",
          "code": "KZ"
+      },
+      {
+         "name": "Lao-PDR",
+         "code": "LA"
       },
       {
          "name": "Laos",
@@ -625,6 +676,10 @@ Data = {
          "code": "MF"
       },
       {
+         "name": "Saint-Martin-(French-part)",
+         "code": "MF"
+      },      
+      {
          "name": "Sint Maarten",
          "code": "MF"
       },
@@ -645,6 +700,10 @@ Data = {
          "code": "MK"
       },
       {
+         "name": "Macedonia,-Republic-of",
+         "code": "MK"
+      },      
+      {
          "name": "Mali",
          "code": "ML"
       },
@@ -653,6 +712,10 @@ Data = {
          "code": "MM"
       },
       {
+         "name": "Myanmar",
+         "code": "MM"
+      },      
+      {
          "name": "Mongolia",
          "code": "MN"
       },
@@ -660,6 +723,10 @@ Data = {
          "name": "Macao",
          "code": "MO"
       },
+      {
+         "name": "Macao,-SAR-China",
+         "code": "MO"
+      },      
       {
          "name": "Macau",
          "code": "MO"
@@ -717,7 +784,7 @@ Data = {
          "code": "NA"
       },
       {
-         "name": "New Caledonia",
+         "name": "New-Caledonia",
          "code": "NC"
       },
       {
@@ -821,6 +888,10 @@ Data = {
          "code": "PS"
       },
       {
+         "name": "Palestinian-Territory",
+         "code": "PS"
+      },      
+      {
          "name": "West-Bank-and-Gaza",
          "code": "PS"
       },      
@@ -844,6 +915,10 @@ Data = {
          "name": "Reunion",
          "code": "RE"
       },
+      {
+         "name": "Réunion",
+         "code": "RE"
+      },      
       {
          "name": "Romania",
          "code": "RO"
@@ -881,6 +956,10 @@ Data = {
          "code": "SD"
       },
       {
+         "name": "South-Sudan",
+         "code": "SD"
+      },      
+      {
          "name": "Sweden",
          "code": "SE"
       },
@@ -900,6 +979,10 @@ Data = {
          "name": "Svalbard-and-Jan-Mayen",
          "code": "SJ"
       },
+      {
+         "name": "Svalbard-and-Jan-Mayen-Islands",
+         "code": "SJ"
+      },      
       {
          "name": "Slovakia",
          "code": "SK"
@@ -936,6 +1019,10 @@ Data = {
          "name": "Syria",
          "code": "SY"
       },
+      {
+         "name": "Syrian-Arab-Republic-(Syria)",
+         "code": "SY"
+      },      
       {
          "name": "Eswatini",
          "code": "SZ"
@@ -1009,6 +1096,10 @@ Data = {
          "code": "TW"
       },
       {
+         "name": "Taiwan,-Republic-of-China",
+         "code": "TW"
+      },      
+      {
          "name": "Taiwan*",
          "code": "TW"
       },
@@ -1021,6 +1112,10 @@ Data = {
          "code": "TZ"
       },
       {
+         "name": "Tanzania,-United-Republic-of",
+         "code": "TZ"
+      },      
+      {
          "name": "Ukraine",
          "code": "UA"
       },
@@ -1029,7 +1124,7 @@ Data = {
          "code": "UG"
       },
       {
-         "name": "United-States-Minor-Outlying-Islands",
+         "name": "US-Minor-Outlying-Islands",
          "code": "UM"
       },
       {
@@ -1057,17 +1152,33 @@ Data = {
          "code": "VC"
       },
       {
+         "name": "Saint-Vincent-and-Grenadines",
+         "code": "VC"
+      },      
+      {
          "name": "Venezuela",
          "code": "VE"
       },
+      {
+         "name": "Venezuela-(Bolivarian-Republic)",
+         "code": "VE"
+      },      
       {
          "name": "Virgin Islands, British",
          "code": "VG"
       },
       {
+         "name": "British-Virgin-Islands",
+         "code": "VG"
+      },      
+      {
          "name": "Virgin Islands, U.S.",
          "code": "VI"
       },
+      {
+         "name": "Virgin-Islands,-US",
+         "code": "VI"
+      },      
       {
          "name": "Vietnam",
          "code": "VN"
@@ -1081,7 +1192,7 @@ Data = {
          "code": "VU"
       },
       {
-         "name": "Wallis-and-Futuna",
+         "name": "Wallis-and-Futuna-Islands",
          "code": "WF"
       },
       {
