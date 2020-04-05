@@ -148,10 +148,12 @@ function deleteCountryMessage(elem){
 
 function editCountryMessage(elem){
   let id = elem.data('id');
+  console.log(id);
   let country = elem.data('msg-country');
   let currentMessage = elem.text().trim();
   //check localstorage for id
   let post_author = window.localStorage.getItem('message:' + id);
+
   if (post_author) {
     $('#edit-message').val(currentMessage);
     $('#virusModal').modal('show');   
