@@ -9,6 +9,7 @@
 }
 
 #country-list-and-stats{
+  min-height: 700px;
   max-height: 700px;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
