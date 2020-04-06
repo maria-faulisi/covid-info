@@ -9,8 +9,8 @@
   <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>  
   <script src="https://kit.fontawesome.com/3732bb8735.js" crossorigin="anonymous"></script>  
-  <link rel="stylesheet" type="text/css" href="/public/styling.css">
-<!--   <link rel="stylesheet" type="text/css" href="styling.css"> -->
+<!--   <link rel="stylesheet" type="text/css" href="/public/styling.css"> -->
+  <link rel="stylesheet" type="text/css" href="styling.css">
 </head>
 
 <body>
@@ -18,6 +18,9 @@
     <h1>Covid-19 Country Summaries</h1>   
     <div id="country-list-and-stats" class="row">
       <div id="all-countries" class="container container-fluid col-6">
+        <form id="search-countries">
+          <input id="user-input" type="text" name="search-country-field" placeholder="Search for a Country">
+        </form>
         <div id="confirmed-list-container">
         </div>
         <div id="no-cases-list-container">
@@ -116,11 +119,11 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"></script>  
-  <script type='text/javascript' src='config.js'></script>
+<!--   <script type='text/javascript' src='config.js'></script>
   <script type="text/javascript" src="/public/data.json"></script>
-  <script type="text/javascript" src="/public/index.js"></script>
-<!--   <script type='text/javascript' src='../config.js'></script>
+  <script type="text/javascript" src="/public/index.js"></script> -->
+  <script type='text/javascript' src='../config.js'></script>
   <script type="text/javascript" src="data.json"></script>
-  <script type="text/javascript" src="index.js"></script>   -->
+  <script type="text/javascript" src="index.js"></script>  
 </body>
 </html>

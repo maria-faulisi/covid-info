@@ -66,8 +66,18 @@ function getAndDisplayData(iso_codes){
         }
       });
 
-      addEventHandler();    
+      addEventHandler();
+      searchCountries(); 
     }
+  });
+};
+
+function searchCountries(){
+  //get input field set as variable
+  let userInput = $('#user-input');
+  userInput.keyup(data, function(){
+    let userValue = $(this).val();
+    console.log(userValue);
   });
 };
 
