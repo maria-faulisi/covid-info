@@ -105,15 +105,15 @@ function addEventHandler(){
 
 function saveMessage(){
   let country = $('.individual-name').html().toLowerCase();
-  if ($('input').val()) {
+  if ($('#message').val()) {
     //variable for input data
-    let message = $('input').val();
+    let message = $('#message').val();
     let id = messageAppReference.ref().child('messages/' + country).push().key;
     let updates = {};
     updates['messages/' + country + '/' + id] = {'message': message};
     messageAppReference.ref().update(updates);
     //clear out input field
-    $('input').val(''); 
+    $('#message').val(''); 
     //save id to localStorage
     let visitorLocalStorage = window.localStorage;
     visitorLocalStorage.setItem('message:' + id, id);
