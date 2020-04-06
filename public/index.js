@@ -75,9 +75,15 @@ function getAndDisplayData(iso_codes){
 function searchCountries(){
   //get input field set as variable
   let userInput = $('#user-input');
+
   userInput.keyup(data, function(){
-    let userValue = $(this).val();
-    console.log(userValue);
+    let $userValue = $(this).val().toLowerCase();
+    let $allCountries = $('.individual-country');
+
+    $allCountries.filter(function(){
+      $(this).toggle($(this).text().toLowerCase().indexOf($userValue) > -1);
+    });
+
   });
 };
 
